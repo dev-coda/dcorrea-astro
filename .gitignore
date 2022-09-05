@@ -1,6 +1,9 @@
 # build output
 dist/
 
+#Keys
+*.pem
+
 # dependencies
 node_modules/
 
