@@ -1,20 +1,25 @@
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
-import tailwind from 'astrojs/tailwind';
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
+import tailwind from "@astrojs/tailwind";
+import sitemap from "@astrojs/sitemap";
+import preact from "@astrojs/preact";
+import image from "@astrojs/image";
 
-import sitemap from '@astrojs/sitemap';
-import storyblok from '@astrojs/storyblok';
+import compress from "astro-compress";
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
-	integrations: [mdx(), sitemap(), tailwind(), storyblok({
-		accessToken: "To2THN2L0JymhIMDLO6fbgtt",
-		components: {
-		  page: "storyblok/Page",
-	  feature: "storyblok/Feature",
-	  grid: "storyblok/Grid",
-	  teaser: "storyblok/Teaser",
-		}
-	  }),],
+  site: "https://dcorrea.co",
+  integrations: [
+    mdx(),
+    sitemap(),
+    tailwind(),
+    preact({
+      compat: true,
+    }),
+    image(),
+    compress(),
+  ],
+  output: "static",
+  root: "./",
 });

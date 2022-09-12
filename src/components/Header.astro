@@ -1,25 +1,240 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../config';
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../config";
+import logo from "../assets/logo.svg";
+import "@fontsource/oxygen";
+import { Icon } from "astro-icon";
 ---
 
-<header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
-	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
-	</nav>
-</header>
-<style>
-	header {
-		margin: 0em 0 2em;
-	}
-	h2 {
-		margin: 0.5em 0;
-	}
+<div id="body" class="absolute top-0 left-0 w-full">
+  <div class="shadow-lg text-center fixed w-full top-0 bg-white z-40">
+    <header class="mx-auto p-4 max-w-5xl">
+      <h1>
+        <a href="/" aria-label="home"
+          >{logo && <img src={logo} alt={SITE_TITLE} class="h-8" />}
+          {!logo && SITE_TITLE}
+        </a>
+      </h1>
+      <span class="menu-control-open" id="menuControlOpen">
+        <Icon class="w-10" pack="carbon" name="chip" />
+      </span>
+      <div class="menu">
+        <div class="menu-inner p-8">
+          <span class="menu-control-close" id="menuControlClose">Close</span>
+          <nav>
+            <HeaderLink href="/">Home</HeaderLink>
+            <HeaderLink href="/blog">Blog</HeaderLink>
+            <HeaderLink href="/about">About</HeaderLink>
+            <HeaderLink href="/uses">Uses</HeaderLink>
+            <HeaderLink
+              href="https://www.linkedin.com/in/david-correa-vanegas-633b40b6/"
+              target="_blank"
+              ><Icon
+                class="max-w-[48px] mx-auto"
+                pack="carbon"
+                name="logo-linkedin"
+              />
+            </HeaderLink>
+            <HeaderLink href="https://github.com/dev-coda" target="_blank"
+              ><Icon
+                class="max-w-[48px] mx-auto"
+                pack="carbon"
+                name="logo-github"
+              />
+            </HeaderLink>
+          </nav>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+
+<script is:inline>
+  var body = document.getElementById("body");
+  var openMenu = document.getElementById("menuControlOpen"); // or whatever triggers the toggle
+  var closeMenu = document.getElementById("menuControlClose"); // or whatever triggers the toggle
+
+  openMenu.addEventListener("click", function (e) {
+    body.classList.toggle("menu--active"); // or whatever your active class is
+  });
+
+  closeMenu.addEventListener("click", function (e) {
+    body.classList.toggle("menu--active"); // or whatever your active class is
+  });
+</script>
+
+<style lang="sass">
+  /* GENERAL STYLING: NOT NECESSARY */
+
+  nav
+    display: block
+
+  nav ul
+    list-style: none
+  a
+    margin: 0
+    padding: 0
+    font-size: 100%
+    vertical-align: center
+    background: transparent
+
+  /* START OF USEFUL CODE */
+  header
+    position: relative
+    overflow: visible
+    z-index: 100
+    background-color: white
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    h1
+      font-size: 2.2rem
+
+    a
+      text-decoration: none
+
+    span.menu-control-open,
+    span.menu-control-close,
+    nav,
+    a
+      font-weight: bold
+      text-transform: uppercase
+
+    span.menu-control-open,
+    span.menu-control-close,
+    nav a
+      font-size: 2.2rem
+
+    span.menu-control-open,
+    span.menu-control-close
+      display: block
+      cursor: pointer
+      color: rgb(128, 128,128)
+
+    span.menu-control-open
+      position: relative
+      font-size: 1.2rem
+      line-height: 150%
+      float: right
+      margin-top: 5px
+
+      &:before
+        padding-top: 1px
+
+    span.menu-control-close
+      font-size: 1.2rem
+      text-align: right
+
+    nav
+      display: flex
+      flex-direction: column
+
+  .menu
+    position: absolute
+    right: 0
+    top: 0
+    background-color: rgb(64,64,64)
+    color: #F0F0F0
+    height: 100vh
+    width: 0
+    overflow: hidden
+    transition: all .3s ease-in-out
+    a
+      transform: translate3d(-150px, 0, 0)
+      transition: transform .15s ease-in
+
+      &-inner
+        position: relative
+        height: 100%
+        width: 80vw
+        padding: 1.5rem
+
+    /* Unnecessary styles for the menu footer */
+
+  .menu--active
+    height: 100vh
+    overflow: hidden
+
+    nav a
+      transform: translate3d(0, 0, 0)
+      transition: transform 500ms ease-out
+
+      /* Handles items within the slide-out to give them the delayed slide-in */
+      &:first-child
+        transition-delay: .2s
+
+      &:nth-child(2)
+        transition-delay: .3s
+      &:nth-child(3)
+        transition-delay: .4s
+      &:nth-child(4)
+        transition-delay: .5s
+      &:last-child
+        transition-delay: .6s
+
+  // This media query sets the width of the menu to be larger on a smaller screen
+  @media screen and (max-width: 767px)
+    .menu--active .menu
+      width: 80%
+
+  // This media query sets the menu width to be slightly smaller on a larger screen (think an iPad)
+  @media screen and (min-width: 768px) and (max-width: 1024px)
+    .menu--active .menu
+      width: 40%
+      .menu-inner
+        width: 40vw
+
+  // This media query styles the menu for a large environment (think a desktop)
+  @media screen and (min-width: 1024px)
+    header
+      padding: 2.5rem
+
+      span.menu-control-open,
+      span.menu-control-close
+        display: none
+
+      .menu
+        position: static
+        display: flex
+        background-color: transparent
+        height: auto
+        width: max-content
+        transition: none
+
+        &-inner
+          padding: 0
+          width: 100%
+          position: static
+
+      a
+        transform: none
+        transition: none
+
+      nav
+        flex-direction: row
+        justify-content: flex-end
+        position: static
+        width: 100%
+        gap: 1rem
+        a
+          font-size: 1.2rem
+          transform: none !important
+          position: static
+          display: flex
+          border: 1px solid rgb(209, 213, 219)
+          transition: 0.2s linear !important
+          padding: 0.5rem 1rem
+          margin: 0
+          &:hover
+            color: rgb(128, 128,128)
+            background-color: rgb(209, 213, 219)
+            transition: 0.2s linear
+          &.active
+            text-decoration: none
+            color: rgb(128, 128, 128)
+            background-color: rgb(209, 213, 219)
+
+          svg
+            width: 1.5rem
 </style>

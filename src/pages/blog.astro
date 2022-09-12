@@ -1,57 +1,107 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import "@fontsource/rowdies";
+import "@fontsource/major-mono-display";
+import { Picture } from "@astrojs/image/components";
+import { Icon } from "astro-icon";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
-	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
+  (a, b) =>
+    new Date(b.frontmatter.pubDate).valueOf() -
+    new Date(a.frontmatter.pubDate).valueOf()
 );
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			ul {
-				list-style-type: none;
-				padding: unset;
-			}
-			ul li {
-				display: flex;
-			}
-			ul li time {
-				flex: 0 0 130px;
-				font-style: italic;
-				color: #888;
-			}
-			ul li a:visited {
-				color: #8e32dc;
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{posts.map((post) => (
-						<li>
-							<time datetime={post.frontmatter.pubDate}>
-								{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
-									year: 'numeric',
-									month: 'short',
-									day: 'numeric',
-								})}
-							</time>
-							<a href={post.url}>{post.frontmatter.title}</a>
-						</li>
-					))}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      ul {
+        list-style-type: none;
+        padding: unset;
+      }
+      ul li {
+        display: flex;
+      }
+      ul li time {
+        font-style: italic;
+        color: #888;
+      }
+      ul li a:visited {
+        color: #002642;
+      }
+    </style>
+  </head>
+  <body class="mt-20">
+    <Header />
+    <main>
+      <section class="px-4">
+        <div class="mx-auto max-w-5xl">
+          <h1 class="text-7xl lg:text-9xl rowdies mt-12 lg:mt-24 ml-[-0.5rem]">Blog</h1><h3
+            class="text-2xl mb-8 py-2"
+          >
+            Just my two cents.
+          </h3>
+        </div>
+      </section>
+      <section class="px-4">
+        <ul class="mx-auto max-w-5xl grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {
+            posts.map((post) => (
+              <li class="inline-flex flex-col rounded-md border border-silver-500 shadow-lg p-4 gap-4 f">
+                <Picture
+                  src={post.frontmatter.heroImage}
+                  alt={post.frontmatter.title}
+                  widths={[400, 800, 1200]}
+                  sizes="(max-width: 400px) 100vw, 500px"
+                  formats={["webp", "avif", "png"]}
+                  aspectRatio={16 / 9}
+                />
+                <a href={post.url} class="major lowercase text-lg font-bold">{post.frontmatter.title}</a>
+                <time datetime={post.frontmatter.pubDate}>
+                  {new Date(post.frontmatter.pubDate).toLocaleDateString(
+                    "en-us",
+                    {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    }
+                  )}
+                </time>
+                <p>{post.frontmatter.description}</p>
+                {post.frontmatter.stackIcons && (
+                  <p class="font-bold">Technologies Used:{" "}</p>
+                  <p class="flex">
+                    
+                    {post.frontmatter.stackIcons.map((icon: string) => (
+                      <Icon
+                        name={icon}
+                        size="1.5x"
+                        class="text-2xl"
+                        style="color: #8e32dc"
+                        alt={icon}
+                      />
+                    ))}
+                  </p>
+                )}
+                <a href={post.url} class="font-bold lowercase major text-lg">Read more</a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>
+
+<style is:inline>
+  li img {
+    border-radius: 0.375rem;
+  }
+</style>

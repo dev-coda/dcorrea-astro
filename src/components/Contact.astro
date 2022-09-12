@@ -1,0 +1,59 @@
+---
+import { Picture } from "@astrojs/image/components";
+import envelope from "../assets/envelope.png";
+---
+
+<section
+  class="lg:mt-6 lg:mb-36 lg:py-36 text-center mt-12 py-12 w-100 bg-neutral-600"
+>
+  <div
+    class="container mx-auto flex flex-col items-center justify-center lg:flex-row max-w-5xl gap-6"
+  >
+    <Picture
+      class="flex flex-col content-center items-center"
+      src={envelope}
+      alt="Decorative image of an envelope"
+      class="text-center lg:max-w-md h-min"
+      widths={[1300]}
+      sizes="(max-width: 600px) 100vw, 400px"
+      formats={["webp", "png"]}
+    /><div class="text-center flex flex-col justify-center align-center">
+      <h2
+        class="major mx-8 text-4xl lg:text-5xl lg:max-w-xl lg:mx-auto text-neutral-400"
+      >
+        Want to get in touch?
+      </h2><div class="">
+        <p class="text-lg mx-8 my-8 lg:max-w-prose text-neutral-400">
+          I'm always open to talk. Even if I'm not currently looking for new
+          opportunities, my inbox is always avaliable. Let me know what you
+          think, ask me a question, or just say hi. I'll get back to you.
+        </p>
+
+        <a
+          href="mailto:david.correav@gmail.com?subject=Mail from dcorrea.co"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><button
+            class="bg-neutral-500 text-white hover:bg-neutral-700 py-2 px-4 flex mx-auto border border-white uppercase text-sm leading-3 items-center"
+          >
+            <svg
+              stroke="currentColor"
+              fill="currentColor"
+              stroke-width="0"
+              viewBox="0 0 16 16"
+              class="mr-3"
+              height="24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M1 3.5l.5-.5h13l.5.5v9l-.5.5h-13l-.5-.5v-9zm1 1.035V12h12V4.536L8.31 8.9H7.7L2 4.535zM13.03 4H2.97L8 7.869 13.03 4z"
+              ></path>
+            </svg> Contact me</button
+          >
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

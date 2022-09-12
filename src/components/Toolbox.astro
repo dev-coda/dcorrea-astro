@@ -1,0 +1,39 @@
+---
+import { Icon } from "astro-icon";
+export interface Props {
+  size: string;
+  content: Array<object>;
+}
+// This massages the data into the format that the icon component expects.
+//Data is copied from the migration of a React component, hence the need for this transformation.
+const icons = Astro.props as Props;
+const map = icons.content.map((icon: Object) => {
+  return { icon: Object.values(icon)[0].icon, url: Object.values(icon)[0].url };
+});
+---
+
+<ul class="flex gap-6 flex-wrap justify-between">
+  {
+    map.map((item) => {
+      return (
+        <li>
+          <a
+            href={item.url}
+            aria-label={item.url}
+            target="_blank"
+            rel="noopener noreferral"
+          >
+            <Icon name={item.icon} alt={item.url} />
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style>
+  [astro-icon] {
+    height: 42px;
+    width: 42px;
+  }
+</style>

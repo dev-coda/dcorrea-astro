@@ -1,0 +1,46 @@
+---
+import { Picture } from "@astrojs/image/components";
+import HeroTypewriter from "./Typewriter";
+import guyChilling from "../assets/guy-chilling.png";
+import "@fontsource/rowdies";
+---
+
+<section
+  class="hero flex flex-col justify-center items-center px-4"
+  style={{ minHeight: "calc(100vh - 4rem)" }}
+>
+  <div
+    class="flex flex-col justify-start md:justify-between align-center z-0 max-w-5xl mx-auto py-1 sm:flex-row-reverse lg:gap-12 w-full"
+  >
+    <Picture
+      src={guyChilling}
+      class="max-w-xs text-center lg:max-w-md mx-auto"
+      alt="Guy sitting with a laptop drinking coffee"
+      widths={[450]}
+      sizes="(max-width: 400px) 100vw, 400px"
+      formats={["webp", "png"]}
+    />
+
+    <div>
+      <div class="rowdies text-left">
+        <h1>
+          <span class="text-7xl w-full block py-2 lg:w-max lg:text-9xl">
+            David
+          </span>
+          <span
+            class="block text-7xl w-full text-base-100 py-2 lg:pr-20 lg:text-9xl lg:w-max lg:p"
+          >
+            Correa
+          </span>
+        </h1>
+      </div>
+      <HeroTypewriter client:only="preact" />
+    </div>
+  </div>
+</section>
+
+<style>
+  img {
+    margin: auto;
+  }
+</style>

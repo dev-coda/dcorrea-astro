@@ -13,10 +13,24 @@
     "@astrojs/mdx": "^0.11.1",
     "@astrojs/rss": "^1.0.0",
     "@astrojs/sitemap": "^1.0.0",
-    "@storyblok/astro": "^1.0.0",
-    "astro": "^1.1.5"
+    "@fontsource/fira-code": "^4.5.11",
+    "@fontsource/major-mono-display": "^4.5.10",
+    "@fontsource/oxygen": "^4.5.8",
+    "@fontsource/rowdies": "^4.5.8",
+    "astro": "^1.1.5",
+    "astro-icon": "^0.7.3",
+    "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^1.0.0"
+    "@astrojs/image": "^0.5.0",
+    "@astrojs/preact": "^1.0.2",
+    "@astrojs/tailwind": "^1.0.0",
+    "astro-compress": "^1.0.7",
+    "preact": "^10.10.6",
+    "sass": "^1.54.9"
+  },
+  "overrides": {
+    "react": "npm:@preact/compat@latest",
+    "react-dom": "npm:@preact/compat@latest"
   }
 }

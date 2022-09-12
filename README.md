@@ -9,7 +9,7 @@ For a while I wanted to add a blog to my website. I also wanted to showcase SSG/
 At the same time, I wanted to migrate from an SPA to an MPA. When the site was first built I prioritized showcasing React as an ability, but since I've come to agree that for this type of content, MPA is usually a better option.
 I also wanted to avoid saving mdx files to github and rather wanted to use some sort of CMS.
 
-So, for the framework I considered Gatsby, Next, and SvelteKit. My Svelte proficiency is not something I wanted to improve currently, and Gatsby and Next seemed overcomplicated for the scope of the project. I´ve build sites in both and I knew something simpler would be better.
+So, for the framework I considered Gatsby, Next, and SvelteKit. My Svelte proficiency is not something I wanted to improve currently, and Gatsby and Next seemed overcomplicated for the scope of the project. I´ve build sites in both and I knew something simpler would be better. Also, I really wanted to try to build a modern MPA.
 Hence, Astro.
 
-As for CMS y considered Headless Wordpress, Strapi, prismic and Storyblok. DX was the deciding factor and I landed on Storyblok. 
+As for CMS y considered Headless Wordpress, Strapi, prismic and Storyblok. DX was the deciding factor and I landed on Storyblok. Unnfortunately, the implementation gave me a lot of headaches, so for the moment I'm just using MDX.
