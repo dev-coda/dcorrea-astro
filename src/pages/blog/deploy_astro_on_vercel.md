@@ -9,7 +9,7 @@ stackIcons: ["vscode-icons:file-type-astro", "logos:vercel-icon"]
 ---
 
 When you're ready to deploy your Astro site, you can do so with a single command using Vercel. No configuration needed. This is a far call from the days of having to configure your own server and deploy your site manually, as I was doing with my first website.
-However, if you want to configure your own server, you can do so with Astro's [built-in support for Node.js](https://docs.astro.build/guides/deploy-nodejs).
+However, if you want to configure your own server, you can do so with Astro's [built-in support for Node.js](https://docs.astro.build/en/guides/integrations-guide/node/).
 
 Initially, that was my intention. I have a soft spot for tweaking nginx, and I wanted to learn how to deploy Astro as a Node.js app on a server. But I quickly realized that I was spending too much time on the deployment process, and not enough time on the actual content of my website. So I decided to use Vercel, and I'm glad I did. However, I still wanted to write a small guide, because I encountered a few issues when I was deploying my site, and I want to help others avoid them.
 
@@ -42,7 +42,7 @@ If you find your site is getting a 404 error, it's a known bug. Simply add to th
 This takes a couple more steps. First you need to add the vercel adapter with the following command:
 
 ```bash
-npx astro add vercel
+$ npx astro add vercel
 ```
 Then you can start a new project on Vercel, and link it to your GitHub repository.
 

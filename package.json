@@ -17,6 +17,7 @@
     "@fontsource/major-mono-display": "^4.5.10",
     "@fontsource/oxygen": "^4.5.8",
     "@fontsource/rowdies": "^4.5.8",
+    "@julian_cataldo/astro-transition": "^0.11.4",
     "astro": "^1.1.5",
     "astro-icon": "^0.7.3",
     "typewriter-effect": "^2.19.0"

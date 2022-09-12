@@ -3,6 +3,8 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "@fontsource/oxygen";
+//@ts-ignore
+import Transition from "@julian_cataldo/astro-transition/Transition.astro";
 
 export interface Props {
   content: {
@@ -34,7 +36,7 @@ const {
     </style>
   </head>
 
-  <body class="mt-20">
+  <body class="mt-20"> <Transition speed={500} background='white' zIndex={1000} />
     <Header />
     <main >
    <article >
