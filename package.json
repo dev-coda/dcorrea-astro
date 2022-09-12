@@ -25,6 +25,7 @@
     "@astrojs/image": "^0.5.0",
     "@astrojs/preact": "^1.0.2",
     "@astrojs/tailwind": "^1.0.0",
+    "@astrojs/vercel": "^1.0.2",
     "astro-compress": "^1.0.7",
     "preact": "^10.10.6",
     "sass": "^1.54.9"
