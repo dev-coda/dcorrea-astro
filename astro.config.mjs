@@ -10,11 +10,12 @@ import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
+
   site: "https://dcorrea.co",
   integrations: [mdx(), sitemap(), tailwind(), preact({
     compat: true
   }), image(), compress()],
-  output: "static",
+  output: "server",
   root: "./",
   adapter: vercel()
 });
