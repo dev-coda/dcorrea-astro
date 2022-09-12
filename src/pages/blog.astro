@@ -7,6 +7,7 @@ import "@fontsource/rowdies";
 import "@fontsource/major-mono-display";
 import { Picture } from "@astrojs/image/components";
 import { Icon } from "astro-icon";
+import Transition from "@julian_cataldo/astro-transition/Transition.astro";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
@@ -38,6 +39,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
     </style>
   </head>
   <body class="mt-20">
+    <Transition speed={500} background="white" zIndex={1000} />
     <Header />
     <main>
       <section class="px-4">
