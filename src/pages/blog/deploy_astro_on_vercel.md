@@ -2,7 +2,7 @@
 layout: "../../layouts/BlogPost.astro"
 title: "Deploying an Astro site on Vercel"
 description: "As simple as it can be."
-pubDate: "Sept 11 2022"
+pubDate: "Sept 05 2022"
 heroImage: "/spaceship.png"
 prompt: "scifi spaceship traveling realistic universe planets stars painting"
 stackIcons: ["vscode-icons:file-type-astro", "logos:vercel-icon"]
