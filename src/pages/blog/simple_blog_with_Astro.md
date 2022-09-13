@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Creating a simple blog with Astro"
 description: "Astro.build lives up to the hype."
 pubDate: "Sept 01 2022"
-heroImage: "/space.png"
+heroImage: "/space.webp"
 prompt: "Retro sci-fi hyper-realistic art dreamscape space futuristic planet on the horizon of a landscape"
 stackIcons: ["vscode-icons:file-type-astro", "vscode-icons:file-type-reactts",vscode-icons:file-type-tailwind,"vscode-icons:file-type-html", "vscode-icons:file-type-css", "vscode-icons:file-type-typescript-official"]
 ---

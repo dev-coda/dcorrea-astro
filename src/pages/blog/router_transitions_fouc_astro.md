@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Router transitions to avoid FOUC with Astro"
 description: "Smooth transitions for your MPA"
 pubDate: "Sept 12 2022"
-heroImage: "/spaceport.png"
+heroImage: "/spaceport.webp"
 prompt: "starship traveling through computer code"
 stackIcons: ["vscode-icons:file-type-astro","vscode-icons:file-type-html","vscode-icons:file-type-css","vscode-icons:file-type-js-official"]
 ---
