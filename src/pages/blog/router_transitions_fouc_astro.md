@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: "Router transitions to avoid FOUC with Astro"
-description: "As simple as it can be."
+description: "Smooth transitions for your MPA"
 pubDate: "Sept 12 2022"
 heroImage: "/spaceport.png"
 prompt: "starship traveling through computer code"
@@ -17,9 +17,9 @@ Flashes of unstyled content, or FOUC, is when a page loads and the content is vi
 ## First approach: Optimization
 
 Depending on your setup, you might be able to solve this issue by optimizing your stylesheets. If the file is small enough, and is served fast (via a CDN for example, or with good caching) you might avoid FOUC. This is very much alike inlining CSS, or putting it in the `<head>` tag. However, this is not a good solution for a few reasons:
-*It relies on a race condition: Surely most of the time your CDN can serve 20kb of Css code and fonts faster than your bundle, but maybe at some point it won't and you have zero control on that process.
-*It's not future proof: As the project grows, the CSS file will grow and the problem will come back. This is even more evident if your font stack grows too.
-*It doesn't solve the problem: It just makes it less likely to happen. If you have a slow connection, or a slow server, you might still see the FOUC.
+* It relies on a race condition: Surely most of the time your CDN can serve 20kb of Css code and fonts faster than your bundle, but maybe at some point it won't and you have zero control on that process.
+* It's not future proof: As the project grows, the CSS file will grow and the problem will come back. This is even more evident if your font stack grows too.
+* It doesn't solve the problem: It just makes it less likely to happen. If you have a slow connection, or a slow server, you might still see the FOUC.
 
 ## Second approach: Magic
 
@@ -44,8 +44,6 @@ Something like this:
 ```
 
 And then, in your JS:
-
-```js
 
 ```js
 window.onload = function() {
