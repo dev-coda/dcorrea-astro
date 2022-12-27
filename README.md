@@ -13,3 +13,9 @@ So, for the framework I considered Gatsby, Next, and SvelteKit. My Svelte profic
 Hence, Astro.
 
 As for CMS y considered Headless Wordpress, Strapi, prismic and Storyblok. DX was the deciding factor and I landed on Storyblok. Unnfortunately, the implementation gave me a lot of headaches, so for the moment I'm just using MDX.
+
+## Notes
+
+Currently the project must be run with node 16 (Use nvm if needed). There's also a known issue with astro-icon that requires svgo to be added as a dependency with svgo@2.8.0. The team at astro-icon is working on supporting svgo 3.
+
+Finally, the astro-transition plugin by julian_cataldo has moved, so the dependency must be changed. This is ToDo.
